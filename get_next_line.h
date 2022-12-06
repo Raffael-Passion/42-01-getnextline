@@ -6,7 +6,7 @@
 /*   By: rhortens <rhortens@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:18:20 by rhortens          #+#    #+#             */
-/*   Updated: 2022/12/05 21:00:35 by rhortens         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:10:37 by rhortens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdio.h>
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 42
 
 char	*get_next_line(int fd);
 
