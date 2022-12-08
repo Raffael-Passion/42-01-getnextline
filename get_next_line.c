@@ -6,7 +6,7 @@
 /*   By: rhortens <rhortens@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:18:16 by rhortens          #+#    #+#             */
-/*   Updated: 2022/12/08 15:41:43 by rhortens         ###   ########.fr       */
+/*   Updated: 2022/12/08 17:18:48 by rhortens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 	int	j;
 
 	i = 0;
-	j = ft_strlen(str, 1);
+	j = ft_strlen(str);
 	while (i < j)
 	{
 		if (str[i] == '\n')
@@ -70,13 +70,14 @@ char	*break_line(char *str)
 char	*ft_line(int fd, char *str)
 {
 	char	*buffer;
+	char	*tmp;
 	int		i;
 
-	buffer = malloc(BUFFER_SIZE + 1);
+	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
 	i = 1;
-	while (i && ft_strchr(str, '\n'))
+	while (i > 0 && !ft_strchr(str, '\n'))
 	{
 		i = read(fd, buffer, BUFFER_SIZE);
 		if (i == -1)
@@ -87,7 +88,9 @@ char	*ft_line(int fd, char *str)
 			return (NULL);
 		}
 		buffer[i] = 0;
-		str = ft_strjoin(str, buffer);
+		tmp = ft_strjoin(str, buffer);
+		free(str);
+		tmp = str;
 	}
 	free(buffer);
 	return (str);
@@ -107,3 +110,13 @@ char	*get_next_line(int fd)
 	str = next_line(str);
 	return (line);
 }
+
+/*
+int	main(void)
+{
+	int		fd;
+	char	*solution;
+
+	
+}
+*/

@@ -6,7 +6,7 @@
 /*   By: rhortens <rhortens@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:18:05 by rhortens          #+#    #+#             */
-/*   Updated: 2022/12/08 12:47:45 by rhortens         ###   ########.fr       */
+/*   Updated: 2022/12/08 17:17:35 by rhortens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *str)
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {
-	char	*str;
+	char	*backup;
 	size_t	i;
 	size_t	j;
 
@@ -32,22 +32,22 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	j = 0;
 	if (!s1 && !s2)
 		return (NULL);
-	str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!str)
+	backup = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!backup)
 		return (0);
 	while (i < ft_strlen(s1))
 	{
-		str[i] = s1[i];
+		backup[i] = s1[i];
 		i++;
 	}
 	while (j < ft_strlen(s2))
 	{
-		str[i] = s2[j];
+		backup[i] = s2[j];
 		i++;
 		j++;
 	}
-	str[i] = '\0';
-	return (str);
+	backup[i] = '\0';
+	return (backup);
 }
 
 char	*ft_strchr(const char *str, int c)
