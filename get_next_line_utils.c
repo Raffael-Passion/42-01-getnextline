@@ -6,7 +6,7 @@
 /*   By: rhortens <rhortens@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:18:05 by rhortens          #+#    #+#             */
-/*   Updated: 2022/12/06 17:49:48 by rhortens         ###   ########.fr       */
+/*   Updated: 2022/12/08 12:47:45 by rhortens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,46 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	}
 	str[i] = '\0';
 	return (str);
+}
+
+char	*ft_strchr(const char *str, int c)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == (unsigned char)c)
+			return ((char *)str + i);
+		else
+			i++;
+	}
+	if (str[i] == (unsigned char)c)
+	{
+		return ((char *)str + i);
+	}
+	return (0);
+}
+
+unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
+{
+	unsigned int	i;
+	unsigned int	counter;
+
+	i = 0;
+	counter = 0;
+	while (src[counter] != '\0')
+	{
+		counter++;
+	}
+	if (size != 0)
+	{
+		while (src[i] != '\0' && size - 1 > i)
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest [i] = '\0';
+	}
+	return (counter);
 }

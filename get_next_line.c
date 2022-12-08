@@ -6,13 +6,13 @@
 /*   By: rhortens <rhortens@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:18:16 by rhortens          #+#    #+#             */
-/*   Updated: 2022/12/06 17:49:48 by rhortens         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:41:43 by rhortens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	*check_new_line(char *str)
+/* int	*check_new_line(char *str)
 {
 	int	i;
 	int	j;
@@ -25,25 +25,67 @@ int	*check_new_line(char *str)
 			return (1);
 	}
 	return (0);
+}*/
+
+char	*next_line(char *str)
+{
+	int		i;
+	int		j;
+	char	*next;
+
+	i = 0;
+	j = ft_strlen(str);
+	if (!str[j])
+	{
+		free(str);
+		return (NULL);
+	}
+	next = malloc(ft_strlen(str) - j + 1);
+	if (!next)
+		return (NULL);
+	ft_strlcpy(next, str, ft_strlen(str) + 1);
+	next[i] = '\0';
+	free(str);
+	return (next);
 }
 
-char	*ft_line(int fd,char *str)
+char	*break_line(char *str)
+{
+	int		i;
+	char	*tmp;
+
+	if (!*str)
+		return (NULL);
+	i = 0;
+	tmp = malloc(sizeof(char) * ft_strlen(str) + 1);
+	if (!tmp)
+		return (NULL);
+	ft_strlcpy(tmp, str, ft_strlen(str) + 1);
+	if (str[i] == '\n')
+		tmp[i++] = '\n';
+	tmp[i] = '\0';
+	return (tmp);
+}
+
+char	*ft_line(int fd, char *str)
 {
 	char	*buffer;
 	int		i;
 
-	str = malloc(BUFFER_SIZE + 1);
-	if (!str)
+	buffer = malloc(BUFFER_SIZE + 1);
+	if (!buffer)
 		return (NULL);
 	i = 1;
-	while (i)
+	while (i && ft_strchr(str, '\n'))
 	{
-		if (check_new_line(str))
-		{
-			free(buffer);
-			return (str);
-		}
 		i = read(fd, buffer, BUFFER_SIZE);
+		if (i == -1)
+		{
+			if (str)
+				free(str);
+			free(buffer);
+			return (NULL);
+		}
 		buffer[i] = 0;
 		str = ft_strjoin(str, buffer);
 	}
@@ -54,11 +96,14 @@ char	*ft_line(int fd,char *str)
 char	*get_next_line(int fd)
 {
 	static char	*str;
+	char		*line;
 
-	if (fd < 0)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	str = ft_line(fd, str);
 	if (!str)
 		return (NULL);
-	
+	line = break_line(str);
+	str = next_line(str);
+	return (line);
 }
