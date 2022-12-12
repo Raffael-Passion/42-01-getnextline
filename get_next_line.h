@@ -6,7 +6,7 @@
 /*   By: rhortens <rhortens@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:18:20 by rhortens          #+#    #+#             */
-/*   Updated: 2022/12/11 18:43:49 by rhortens         ###   ########.fr       */
+/*   Updated: 2022/12/12 18:00:46 by rhortens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
-
-# ifndef MAX_FILE_DESCRIPTOR
-#  define MAX_FILE_DESCRIPTOR 4096
+#  define BUFFER_SIZE 42
 # endif
 
 # include <stdlib.h>

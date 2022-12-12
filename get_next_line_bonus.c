@@ -6,7 +6,7 @@
 /*   By: rhortens <rhortens@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:41:25 by rhortens          #+#    #+#             */
-/*   Updated: 2022/12/11 18:42:03 by rhortens         ###   ########.fr       */
+/*   Updated: 2022/12/12 18:11:03 by rhortens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,23 +89,23 @@ char	*ft_line(int fd, char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*str;
+	static char	*str[1024];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	if (str == NULL)
+	if (str[fd] == NULL)
 	{
-		str = malloc(sizeof(char) * 1);
-		if (!str)
+		str[fd] = malloc(sizeof(char) * 1);
+		if (!str[fd])
 			return (NULL);
-		str[0] = '\0';
+		str[fd][0] = '\0';
 	}
-	str = ft_line(fd, str);
-	if (!str)
+	str[fd] = ft_line(fd, str[fd]);
+	if (!str[fd])
 		return (NULL);
-	line = break_line(str);
-	str = next_line(str);
+	line = break_line(str[fd]);
+	str[fd] = next_line(str[fd]);
 	return (line);
 }
 
