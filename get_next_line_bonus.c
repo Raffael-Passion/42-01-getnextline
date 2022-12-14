@@ -6,11 +6,21 @@
 /*   By: rhortens <rhortens@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:41:25 by rhortens          #+#    #+#             */
-/*   Updated: 2022/12/12 18:11:03 by rhortens         ###   ########.fr       */
+/*   Updated: 2022/12/14 20:18:35 by rhortens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+/*
+For the bonus part of get_next_line you must use just one static variable. 
+I already did that in the main part, so the functions and the logic itself are almost identically.
+Also the project should manage multiple file descriptors at the same time. 
+This can be ensured through some small changes in the get_next_line.
+I therefor added a double pointer to my static char. 
+The array now contains the max size of file descriptors and ensures that everything can relate
+to the belonged file descriptor.
+*/
 
 char	*next_line(char *str)
 {
