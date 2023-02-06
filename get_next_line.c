@@ -6,7 +6,7 @@
 /*   By: rhortens <rhortens@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:18:16 by rhortens          #+#    #+#             */
-/*   Updated: 2022/12/14 21:47:16 by rhortens         ###   ########.fr       */
+/*   Updated: 2023/02/06 20:19:03 by rhortens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 get_next_line shall read the text file pointed to by the file descriptor, one line at a time.
 After that the line should be returned. If there is nothing to read or an error -> NULL
+The function is reading from a file or from the stdinput (0) -> fd < 0
 The returned line should also include '\n' except if the end of the file and does not
 end with '\n'.
 The function does still work if the BUFFER_SIZE value is 9999, 1 or 10000000. 
