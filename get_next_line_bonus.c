@@ -6,11 +6,11 @@
 /*   By: rhortens <rhortens@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:41:25 by rhortens          #+#    #+#             */
-/*   Updated: 2022/12/14 20:18:35 by rhortens         ###   ########.fr       */
+/*   Updated: 2023/02/07 18:26:50 by rhortens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 /*
 For the bonus part of get_next_line you must use just one static variable. 
@@ -102,7 +102,7 @@ char	*get_next_line(int fd)
 	static char	*str[1024];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE < 1)
 		return (NULL);
 	if (str[fd] == NULL)
 	{

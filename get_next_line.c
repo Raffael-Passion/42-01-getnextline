@@ -6,7 +6,7 @@
 /*   By: rhortens <rhortens@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:18:16 by rhortens          #+#    #+#             */
-/*   Updated: 2023/02/06 20:19:03 by rhortens         ###   ########.fr       */
+/*   Updated: 2023/02/07 18:26:50 by rhortens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ char	*break_line(char *str)
 		i++;
 	tmp = malloc(sizeof(char) * (i + 2));
 	if (!tmp)
+	{
+		free(str);
 		return (NULL);
+	}
 	ft_strlcpy(tmp, str, i + 1);
 	if (str[i] == '\n')
 		tmp[i++] = '\n';
@@ -106,7 +109,10 @@ char	*ft_line(int fd, char *str)
 
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
+	{
+		free(str);
 		return (NULL);
+	}
 	i = 1;
 	while (!ft_strchr(str, '\n') && i > 0)
 	{
@@ -141,7 +147,7 @@ char	*get_next_line(int fd)
 	static char	*str;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE < 1)
 		return (NULL);
 	if (str == NULL)
 	{
