@@ -6,7 +6,7 @@
 /*   By: rhortens <rhortens@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:18:20 by rhortens          #+#    #+#             */
-/*   Updated: 2022/12/12 18:00:46 by rhortens         ###   ########.fr       */
+/*   Updated: 2023/07/24 17:19:50 by rhortens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdio.h>
+
 
 char			*get_next_line(int fd);
 size_t			ft_strlen(const char *str);

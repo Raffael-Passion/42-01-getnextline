@@ -6,7 +6,7 @@
 /*   By: rhortens <rhortens@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 20:18:16 by rhortens          #+#    #+#             */
-/*   Updated: 2023/02/07 18:26:50 by rhortens         ###   ########.fr       */
+/*   Updated: 2023/07/24 17:20:13 by rhortens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,9 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*int	main(void)
+#include <fcntl.h>
+
+int	main(void)
 {
 	int		fd;
 	char	*solution;
@@ -189,4 +191,4 @@ char	*get_next_line(int fd)
 	printf("%s", solution);
 	free(solution);
 	close(fd);
-}*/
+}
